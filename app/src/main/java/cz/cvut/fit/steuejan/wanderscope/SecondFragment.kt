@@ -10,7 +10,6 @@ class SecondFragment : MvvmFragment<FragmentSecondBinding, SecondFragmentVM>(
     R.layout.fragment_second,
     SecondFragmentVM::class
 ) {
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

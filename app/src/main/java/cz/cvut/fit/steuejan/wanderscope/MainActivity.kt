@@ -8,6 +8,7 @@ import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import cz.cvut.fit.steuejan.wanderscope.app.arch.mwwm.MvvmActivity
 import cz.cvut.fit.steuejan.wanderscope.databinding.ActivityMainBinding
 
@@ -21,12 +22,15 @@ class MainActivity : MvvmActivity<ActivityMainBinding, MainActivityVM>(
         super.onCreate(savedInstanceState)
 
         val navHostFragment =
-            supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
+            supportFragmentManager.findFragmentById(R.id.navHostFragment) as NavHostFragment
         navController = navHostFragment.findNavController()
 
         setSupportActionBar(binding.toolbar)
-        val appBarConfiguration = AppBarConfiguration(navController.graph)
+        val mainFragments = setOf(R.id.FirstFragment, R.id.SecondFragment)
+        val appBarConfiguration = AppBarConfiguration(mainFragments)
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        binding.bottomNavigation.setupWithNavController(navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {

@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu>
-    <!--    <item-->
-    <!--            android:id="@+id/inGameFragment"-->
-    <!--            android:icon="@drawable/ic_baseline_people_alt_24"-->
-    <!--            android:title="@string/inGame" />-->
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@id/FirstFragment"
+        android:title="first" />
 
-    <!--    <item-->
-    <!--            android:id="@+id/gameSettingsFragment"-->
-    <!--            android:icon="@drawable/ic_baseline_settings_24"-->
-    <!--            android:title="@string/gameSettings" />-->
+    <item
+        android:id="@id/SecondFragment"
+        android:title="second" />
 </menu>
