@@ -1,7 +1,6 @@
 package cz.cvut.fit.steuejan.wanderscope.app.log
 
-import android.util.Log.DEBUG
-import android.util.Log.VERBOSE
+import android.util.Log.*
 import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.ktx.Firebase
 import cz.cvut.fit.steuejan.wanderscope.BuildConfig
@@ -17,7 +16,7 @@ fun initTimber() {
 
 private class CrashReportingTree : Timber.Tree() {
     override fun log(priority: Int, tag: String?, message: String, t: Throwable?) {
-        if (priority in listOf(VERBOSE, DEBUG)) {
+        if (priority in listOf(VERBOSE, DEBUG, WARN)) {
             return
         }
 

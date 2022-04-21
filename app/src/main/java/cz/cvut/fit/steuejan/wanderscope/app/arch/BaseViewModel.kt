@@ -5,9 +5,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 
-@Suppress("MemberVisibilityCanBePrivate")
 abstract class BaseViewModel(
-    protected val state: SavedStateHandle? = null
+    protected open val state: SavedStateHandle? = null
 ) : ViewModel(), LifecycleObserver {
 
     fun <T> setStateData(paramName: String, data: T) {
