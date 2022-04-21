@@ -1,4 +1,4 @@
-package cz.cvut.fit.steuejan.wanderscope.app.util
+package cz.cvut.fit.steuejan.wanderscope.app.event
 
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
@@ -17,7 +17,7 @@ import java.util.concurrent.atomic.AtomicBoolean
  * <p>
  * Note that only one observer is going to be notified of changes.
  */
-class SingleLiveEvent<T> : MutableLiveData<T>() {
+open class SingleLiveEvent<T> : MutableLiveData<T>() {
 
     private val mPending = AtomicBoolean(false)
 
@@ -40,13 +40,5 @@ class SingleLiveEvent<T> : MutableLiveData<T>() {
     override fun setValue(t: T?) {
         mPending.set(true)
         super.setValue(t)
-    }
-
-    /**
-     * Used for cases where T is Void, to make calls cleaner.
-     */
-    @MainThread
-    fun call() {
-        value = null
     }
 }
