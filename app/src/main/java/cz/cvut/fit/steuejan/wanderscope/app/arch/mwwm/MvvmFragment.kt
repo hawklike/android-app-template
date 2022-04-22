@@ -10,8 +10,7 @@ import androidx.databinding.ViewDataBinding
 import cz.cvut.fit.steuejan.wanderscope.BR
 import cz.cvut.fit.steuejan.wanderscope.app.arch.BaseFragment
 import cz.cvut.fit.steuejan.wanderscope.app.arch.BaseViewModel
-import cz.cvut.fit.steuejan.wanderscope.app.nav.ActionNavigation
-import cz.cvut.fit.steuejan.wanderscope.app.nav.DestinationNavigation
+import cz.cvut.fit.steuejan.wanderscope.app.nav.NavigationEvent
 import org.koin.androidx.viewmodel.ext.android.getViewModel
 import kotlin.reflect.KClass
 
@@ -28,7 +27,7 @@ abstract class MvvmFragment<B : ViewDataBinding, VM : BaseViewModel>(
         lifecycle.addObserver(viewModel)
     }
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = DataBindingUtil.inflate<B>(inflater, layoutId, container, false).apply {
             lifecycleOwner = viewLifecycleOwner
             setVariable(BR.vm, viewModel)
@@ -44,8 +43,8 @@ abstract class MvvmFragment<B : ViewDataBinding, VM : BaseViewModel>(
     private fun listenToNavigate() {
         viewModel.navigateEvent.safeObserve {
             when (it) {
-                is ActionNavigation -> navigateTo(it.action)
-                is DestinationNavigation -> navigateTo(it.destinationId, it.bundle)
+                is NavigationEvent.Action -> navigateTo(it.action)
+                is NavigationEvent.Destination -> navigateTo(it.destinationId, it.bundle)
             }
         }
     }
