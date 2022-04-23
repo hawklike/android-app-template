@@ -16,9 +16,7 @@ abstract class DataBindingAdapter<T : RecyclerItem>(diffCallback: DiffUtil.ItemC
 
     private var onItemClickListener: ((item: T, position: Int) -> Unit)? = null
 
-    class DataBindingViewHolder<T>(val binding: ViewDataBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-
+    class DataBindingViewHolder<T>(val binding: ViewDataBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: T) {
             binding.setVariable(BR.item, item)
             binding.executePendingBindings()
@@ -27,8 +25,7 @@ abstract class DataBindingAdapter<T : RecyclerItem>(diffCallback: DiffUtil.ItemC
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataBindingViewHolder<T> {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding =
-            DataBindingUtil.inflate<ViewDataBinding>(layoutInflater, viewType, parent, false)
+        val binding = DataBindingUtil.inflate<ViewDataBinding>(layoutInflater, viewType, parent, false)
         return DataBindingViewHolder(binding)
     }
 
@@ -45,4 +42,6 @@ abstract class DataBindingAdapter<T : RecyclerItem>(diffCallback: DiffUtil.ItemC
     fun setOnClickListener(onClick: (item: T, position: Int) -> Unit) {
         onItemClickListener = onClick
     }
+
+    class UniversalAdapter : DataBindingAdapter<RecyclerItem>()
 }

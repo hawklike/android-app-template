@@ -40,6 +40,11 @@ abstract class MvvmFragment<B : ViewDataBinding, VM : BaseViewModel>(
         listenToNavigate()
     }
 
+    override fun onDestroy() {
+        lifecycle.removeObserver(viewModel)
+        super.onDestroy()
+    }
+
     private fun listenToNavigate() {
         viewModel.navigateEvent.safeObserve {
             when (it) {
@@ -48,10 +53,4 @@ abstract class MvvmFragment<B : ViewDataBinding, VM : BaseViewModel>(
             }
         }
     }
-
-    override fun onDestroy() {
-        lifecycle.removeObserver(viewModel)
-        super.onDestroy()
-    }
-
 }
