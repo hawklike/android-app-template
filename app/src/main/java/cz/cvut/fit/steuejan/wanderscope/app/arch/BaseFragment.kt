@@ -7,16 +7,19 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.navigation.NavDirections
 import androidx.navigation.fragment.findNavController
-import cz.cvut.fit.steuejan.wanderscope.app.nav.BottomNavigationScreen
+import cz.cvut.fit.steuejan.wanderscope.app.nav.WithBottomNavigationBar
+import cz.cvut.fit.steuejan.wanderscope.app.toolbar.WithToolbar
 import cz.cvut.fit.steuejan.wanderscope.app.util.runOrLogException
 
 abstract class BaseFragment : Fragment() {
 
     open val hasBottomNavigation = true
+    open val hasToolbar = true
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         handleBottomNavigation()
+        handleToolbar()
     }
 
     protected inline fun <T> LiveData<T>.safeObserve(crossinline callback: (T) -> Unit) {
@@ -39,9 +42,17 @@ abstract class BaseFragment : Fragment() {
 
     private fun handleBottomNavigation() {
         if (hasBottomNavigation) {
-            (activity as? BottomNavigationScreen)?.showBottomNavigation()
+            (activity as? WithBottomNavigationBar)?.showBottomNavigation()
         } else {
-            (activity as? BottomNavigationScreen)?.hideBottomNavigation()
+            (activity as? WithBottomNavigationBar)?.hideBottomNavigation()
+        }
+    }
+
+    private fun handleToolbar() {
+        if (hasToolbar) {
+            (activity as? WithToolbar)?.showToolbar()
+        } else {
+            (activity as? WithToolbar)?.hideToolbar()
         }
     }
 }

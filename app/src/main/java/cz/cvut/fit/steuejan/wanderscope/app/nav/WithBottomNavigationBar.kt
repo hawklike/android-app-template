@@ -1,6 +1,6 @@
 package cz.cvut.fit.steuejan.wanderscope.app.nav
 
-interface BottomNavigationScreen {
+interface WithBottomNavigationBar {
     fun showBottomNavigation()
     fun hideBottomNavigation()
 }

@@ -10,13 +10,14 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import cz.cvut.fit.steuejan.wanderscope.app.arch.mwwm.MvvmActivity
-import cz.cvut.fit.steuejan.wanderscope.app.nav.BottomNavigationScreen
+import cz.cvut.fit.steuejan.wanderscope.app.nav.WithBottomNavigationBar
+import cz.cvut.fit.steuejan.wanderscope.app.toolbar.WithToolbar
 import cz.cvut.fit.steuejan.wanderscope.databinding.ActivityMainBinding
 
 class MainActivity : MvvmActivity<ActivityMainBinding, MainActivityVM>(
     R.layout.activity_main,
     MainActivityVM::class
-), BottomNavigationScreen {
+), WithBottomNavigationBar, WithToolbar {
 
     private lateinit var navController: NavController
 
@@ -47,5 +48,13 @@ class MainActivity : MvvmActivity<ActivityMainBinding, MainActivityVM>(
 
     override fun hideBottomNavigation() {
         binding.bottomNavigation.visibility = GONE
+    }
+
+    override fun showToolbar() {
+        binding.toolbar.visibility = VISIBLE
+    }
+
+    override fun hideToolbar() {
+        binding.toolbar.visibility = GONE
     }
 }
