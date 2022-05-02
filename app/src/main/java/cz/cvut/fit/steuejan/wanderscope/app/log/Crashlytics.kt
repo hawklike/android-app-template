@@ -3,10 +3,10 @@ package cz.cvut.fit.steuejan.wanderscope.app.log
 import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.ktx.Firebase
 import cz.cvut.fit.steuejan.wanderscope.BuildConfig
-import cz.cvut.fit.steuejan.wanderscope.app.common.Flavor
+import cz.cvut.fit.steuejan.wanderscope.app.util.isDebuggable
 
 fun initFirebaseCrashlytics() {
-    if (BuildConfig.DEBUG && BuildConfig.FLAVOR == Flavor.STAGING.env) {
+    if (isDebuggable()) {
         Firebase.crashlytics.setCrashlyticsCollectionEnabled(false)
     }
 
