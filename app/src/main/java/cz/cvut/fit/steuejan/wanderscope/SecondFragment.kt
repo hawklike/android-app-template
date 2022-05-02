@@ -5,7 +5,6 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import cz.cvut.fit.steuejan.wanderscope.app.arch.mwwm.MvvmFragment
 import cz.cvut.fit.steuejan.wanderscope.databinding.FragmentSecondBinding
@@ -38,7 +37,7 @@ class SecondFragment : MvvmFragment<FragmentSecondBinding, SecondFragmentVM>(
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.action_settings -> {
-                Toast.makeText(requireContext(), "lskldsd", Toast.LENGTH_SHORT).show()
+                viewModel.sendRequest()
                 return true
             }
             else -> super.onOptionsItemSelected(item)

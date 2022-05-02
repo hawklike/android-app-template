@@ -5,6 +5,6 @@ import cz.cvut.fit.steuejan.wanderscope.app.nav.NavigationEvent.Destination
 
 class FirstFragmentVM : BaseViewModel() {
     fun doJob() {
-        navigateTo(Destination(R.id.action_FirstFragment_to_SecondFragment))
+        navigateTo(Destination(R.id.SecondFragment))
     }
 }

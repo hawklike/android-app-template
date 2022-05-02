@@ -5,7 +5,6 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
@@ -27,15 +26,14 @@ class MainActivity : MvvmActivity<ActivityMainBinding, MainActivityVM>(
         val navHostFragment = supportFragmentManager
             .findFragmentById(R.id.navHostFragment) as? NavHostFragment ?: return
 
-        navController = navHostFragment.findNavController()
+        navController = navHostFragment.navController
+        binding.bottomNavigation.setupWithNavController(navController)
 
         setSupportActionBar(binding.toolbar)
 
-        val mainFragments = setOf(R.id.FirstFragment)
+        val mainFragments = setOf(R.id.FirstFragment, R.id.SecondFragment)
         val appBarConfiguration = AppBarConfiguration(mainFragments)
         setupActionBarWithNavController(navController, appBarConfiguration)
-
-        binding.bottomNavigation.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {

@@ -5,6 +5,7 @@ import cz.cvut.fit.steuejan.wanderscope.app.di.initKoin
 import cz.cvut.fit.steuejan.wanderscope.app.log.initFirebaseCrashlytics
 import cz.cvut.fit.steuejan.wanderscope.app.log.initTimber
 
+@Suppress("unused") //used in manifest
 class WanderscopeApp : Application() {
 
     override fun onCreate() {

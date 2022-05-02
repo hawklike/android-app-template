@@ -1,7 +1,9 @@
-package cz.cvut.fit.steuejan.wanderscope.app.arch.adapter
+package cz.cvut.fit.steuejan.wanderscope.app.binding
 
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
+import cz.cvut.fit.steuejan.wanderscope.app.arch.adapter.DataBindingAdapter
+import cz.cvut.fit.steuejan.wanderscope.app.arch.adapter.RecyclerItem
 
 @BindingAdapter("recyclerItems")
 fun <T : RecyclerItem> RecyclerView.bindRecyclerItems(recyclerItems: List<T>?) {

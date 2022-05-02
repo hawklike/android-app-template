@@ -11,4 +11,8 @@ fun initKoin(appContext: Context) {
     }
 }
 
-private val allModules = listOf(viewModelModule)
+private val allModules = listOf(
+    serializerModule,
+    networkModule,
+    viewModelModule
+)

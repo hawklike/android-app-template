@@ -3,11 +3,11 @@ package cz.cvut.fit.steuejan.wanderscope.app.log
 import android.util.Log.*
 import com.google.firebase.crashlytics.ktx.crashlytics
 import com.google.firebase.ktx.Firebase
-import cz.cvut.fit.steuejan.wanderscope.BuildConfig
+import cz.cvut.fit.steuejan.wanderscope.app.util.isDebuggable
 import timber.log.Timber
 
 fun initTimber() {
-    if (BuildConfig.DEBUG) {
+    if (isDebuggable()) {
         Timber.plant(Timber.DebugTree())
     } else {
         Timber.plant(CrashReportingTree())

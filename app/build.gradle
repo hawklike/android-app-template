@@ -71,6 +71,11 @@ ext {
     koin_version = '3.2.0-beta-1'
     timber_version = '5.0.1'
     firebase_version = '29.3.1'
+    retrofit_version = '2.9.0'
+    moshi_version = '1.13.0'
+    security_crypto_version = '1.1.0-alpha03'
+    chucker_version = '3.5.2'
+    lifecycle_version = '2.4.1'
 }
 
 dependencies {
@@ -82,6 +87,12 @@ dependencies {
     //Jetpack Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //LiveData Extension
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
+
+    //Jetpack Security
+    implementation "androidx.security:security-crypto-ktx:$security_crypto_version"
 
     //Koin
     implementation "io.insert-koin:koin-android:$koin_version"
@@ -96,6 +107,17 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     //Firebase Crashlytics
     implementation 'com.google.firebase:firebase-crashlytics-ktx'
+
+    //Retrofit
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofit_version"
+
+    //Moshi
+    implementation "com.squareup.moshi:moshi-kotlin:$moshi_version"
+
+    //Chucker
+    debugImplementation "com.github.chuckerteam.chucker:library:$chucker_version"
+    releaseImplementation "com.github.chuckerteam.chucker:library-no-op:$chucker_version"
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
